@@ -16,11 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-directory '/etc/heka/conf.d' do
-  recursive true
-end
-
 # Install global configuration
+directory '/etc/heka'
+
 heka_config 'hekad' do
   config node['heka']['config']
 end

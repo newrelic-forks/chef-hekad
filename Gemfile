@@ -14,3 +14,5 @@ group :integration do
   gem 'kitchen-vagrant'
   gem 'chef-zero'
 end
+
+gem 'toml-rb', '~> 0.3.13'

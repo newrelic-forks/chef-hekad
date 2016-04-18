@@ -56,10 +56,9 @@ class Chef::Provider
         r = new_resource
 
         f = file ::File.join(r.path, "#{r.name}.toml") do
-          content TOML.dump(r.name => r.config)
+          content TOML.dump(r.config).gsub!(/^\[/,"\n[")
           action a
         end
-
         new_resource.updated_by_last_action(f.updated_by_last_action?)
       end
     end

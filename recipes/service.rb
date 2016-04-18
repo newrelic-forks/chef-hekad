@@ -16,20 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group 'heka' do
-  system true
-  action :create
-end
-
-user 'heka' do
-  shell '/bin/false'
-  system true
-  gid 'heka'
-end
-
 directory '/var/cache/hekad' do
-  owner 'heka'
-  group 'heka'
+  owner 'root'
+  group 'root'
   recursive true
 end
 
@@ -41,8 +30,8 @@ systemd_service 'hekad' do
     wanted_by 'multi-user.target'
   end
   service do
-    user 'heka'
-    group 'heka'
+    user 'root'
+    group 'root'
     exec_start "/usr/bin/hekad -config=#{node['heka']['config_dir']}"
     restart 'on-failure'
     kill_mode 'mixed'

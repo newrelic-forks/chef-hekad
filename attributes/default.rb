@@ -17,10 +17,7 @@
 # limitations under the License.
 
 default['heka'].tap do |heka|
-  heka['config_dir'] = '/etc/heka/conf.d'
-  heka['config'].tap do |c|
-    c['maxprocs'] = 2
-  end
+  heka['config_dir'] = '/etc/heka'
 
   # These do not apply to mac_os_x
   heka['package_url'] = value_for_platform(
